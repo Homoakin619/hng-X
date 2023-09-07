@@ -8,7 +8,7 @@ app.use("/api",(request,response) => {
     const {slack_name, track} = request.query;
     if (slack_name && track) {
         const day = new Date();
-        const time = day.toISOString();
+        const time = day.toISOString().split('.')[0] + 'Z';;
         const day_object = {
             1: "Monday", 2: "Tuesday", 3: "Wednesday", 4: "Thursday",
             5: "Friday", 6: "Saturday", 0: "Sunday"

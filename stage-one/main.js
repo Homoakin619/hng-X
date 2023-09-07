@@ -18,8 +18,8 @@ app.use("/api",(request,response) => {
             "current_day": current_day,
             "utc_time": time,
             "track": track,
-            "github_file_url": "https://github.com/username/repo/blob/main/file_name.ext",
-            "github_repo_url": "https://github.com/username/repo",
+            "github_file_url": "https://github.com/Homoakin619/hng-X/blob/master/stage-one/main.js",
+            "github_repo_url": "https://github.com/Homoakin619/hng-X/tree/master/stage-one",
             "status_code": 200
         }
         )

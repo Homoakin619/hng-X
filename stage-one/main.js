@@ -3,9 +3,6 @@ const app = express();
 
 const port = process.env.PORT || 3000;
 
-app.use("/",(request, response) => {
-    return response.send("Welcome to Api homepage")
-})
 
 app.use("/api",(request,response) => {
     const {slack_name, track} = request.query;
@@ -33,6 +30,10 @@ app.use("/api",(request,response) => {
             "status_code": 400
         })
     }
+})
+
+app.use("/",(request, response) => {
+    return response.send("Welcome to Api homepage")
 })
 
 const start = () => {

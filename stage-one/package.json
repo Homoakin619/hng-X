@@ -20,6 +20,6 @@
   },
   "homepage": "https://github.com/homoakin619/hng-X#readme",
   "dependencies": {
-    "express": "^4.18.2",
+    "express": "^4.18.2"
   }
 }

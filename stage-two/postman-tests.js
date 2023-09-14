@@ -5,17 +5,17 @@
 
 // body : {"name": "mark"}
 pm.test("POST Success: ",function(){
-    pm.response.to.have.status(200)
+    pm.response.to.have.status(201)
 })
 
 // body : {"name": "mark$"}
 pm.test('Name with symbol fails: ',function(){
-    pm.response.to.have.status(400)
+    pm.response.to.have.status(403)
 })
 
 // body : {"name": ""}
 pm.test('Empty Name fails: ',function(){
-    pm.response.to.have.status(400)
+    pm.response.to.have.status(403)
 })
 
 //**************************************//
@@ -29,12 +29,12 @@ pm.test("PATCH Success: ",function(){
 
 // body : {"name": "mark$"}
 pm.test('Name with symbol fails: ',function(){
-    pm.response.to.have.status(400)
+    pm.response.to.have.status(403)
 })
 
 // body : {"name": ""}
 pm.test('Empty Name fails: ',function(){
-    pm.response.to.have.status(400)
+    pm.response.to.have.status(403)
 })
 
 //**************************************//

@@ -22,11 +22,11 @@ const postPerson = asyncHandler( async(req,res) => {
         let inputPattern = /^[A-Za-z]+$/
         id = idQuery ? ++idQuery._id : 1;
         if (!req.body) {
-            return res.status(400).json({message: "Enter a valid string for name, Special characters not allowed"})
+            return res.status(403).json({message: "Enter a valid string for name, Special characters not allowed"})
         } else if (typeof req.body.name != 'string' || req.body.name.length < 1) {
-            return res.status(400).json({message: "Enter a valid string for name, Special characters not allowed"})
+            return res.status(403).json({message: "Enter a valid string for name, Special characters not allowed"})
         } else if(!req.body.name.match(inputPattern)) {
-            return res.status(400).json({message: "Enter a valid string for name, Special characters not allowed"})
+            return res.status(403).json({message: "Enter a valid string for name, Special characters not allowed"})
         }
 
         await User.create({...req.body, _id: id} );
@@ -42,7 +42,7 @@ const deletePerson = asyncHandler(async (req,res) => {
         const user = await User.findByIdAndDelete(req.params.user_id).exec();
 
         if (!user) {
-            return res.status(400).json({message: "No user exist with specified id"})
+            return res.status(404).json({message: "No user exist with specified id"})
         }
 
         res.status(204).json({})

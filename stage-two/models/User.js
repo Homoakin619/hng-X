@@ -4,7 +4,7 @@ const {Schema, model} = mongoose
 const UserSchema = new Schema({
     _id: {
         type: Number,
-        // required: [true,'id is required']
+        required: [true,'id is required']
     },
     name: {
         type: String,

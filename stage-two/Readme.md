@@ -12,5 +12,5 @@ create a .env file and add the following variables
 
 ## Spin up your application
 Navigate to the cloned folder in your terminal and run
-```npm run dev```
+```npm start```
 **you should see your app up and running**

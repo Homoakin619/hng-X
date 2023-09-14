@@ -14,11 +14,15 @@ app.use('/',(request,response) => {
 
 
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 5000;
 
 const start = () => {
     try {
-        mongoose.connect(process.env.MONGODB_URI);
+        mongoose.connect(process.env.MONGODB_URI,{
+            dbName: "hng_person_api",
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+         });
         app.listen(port,console.log('Server is running at port '+port));
     } catch (error) {
         console.log(error);

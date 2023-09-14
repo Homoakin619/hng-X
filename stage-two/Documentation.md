@@ -10,14 +10,19 @@ No authentication is required
 ## ENDPOINTS
 
 **Endpoint :** `GET /api/{user_id}`
+
 **Description :** Fetch a Person details based on unique ID
 
 **Endpoint Example**
+
 **Request**
--Headers: None
+
+- Headers: None
+
 **Response :**
 - Status Code: `200 OK` if person exists
-- Status Code: `400 Not Found` if person not found
+- Status Code: `404 Not Found` if person not found
+- Status Code: `500 Internal Server Error` Error occured processing request
 - Content-Type: `application/json`
 
 **Response Body Sample (Success):**
@@ -25,7 +30,7 @@ No authentication is required
 {
     "id": 1,
     "name": "Mark Essien",
-    "message": "User fetched Successfully"
+    "message": "Operation successful"
 }
 ```
 **Response Body Sample (Not Found):**
@@ -34,8 +39,15 @@ No authentication is required
     "message": "User with provided id does not exist"
 }
 ```
+**Response Body Sample (Internal Server Error):**
+```json
+{
+    "message": "Error occured fetching Person"
+}
+``` 
 
-**Endpoint**: `POST /api`
+
+# **Endpoint**: `POST /api`
 
 **Description**: Create a new Person entity.
 
@@ -49,12 +61,14 @@ No authentication is required
 **Response:**
 - Status Code: `201 Created` person created successfully
 - Status Code: `403 Forbidden` Error creating person
+- Status Code: `500 Internal Server Error` Error occured processing request
 
 **Response Body Sample (Created):**
 ```json
 {
-    "id": 1
-    "name": "Mark Essien"
+    "id": 1,
+    "name": "Mark Essien",
+    "message": "Operation successful"
 }
 ``` 
 
@@ -65,34 +79,44 @@ No authentication is required
 }
 ``` 
 
-**Endpoint**: `PATCH /api/{user_id}`
+**Response Body Sample (Internal Server Error):**
+```json
+{
+    "message": "Error occured creating Person"
+}
+``` 
 
-**Description**: Create a new Person entity.
+
+# **Endpoint**: `PATCH /api/{user_id}`
+
+**Description**: Update a Person entity.
 
 **Request:**
 
--- Headers:
+## **Headers:**
 - Content-Type: `application/json`
 
--- Request Body:`{ "name": "Mark Essien"}`
+## **Request Body:**`{ "name": "Mark Essien"}`
 
 **Response:**
 - Status Code: `200 OK` person updated successfully
 - Status Code: `403 Forbidden` Error updating person, invalid name value
 - Status Code: `404 Not Found` Person does not exist
+- Status Code: `500 Internal Server Error` Error occured processing request
 
-**Response Body Sample (Created):**
+**Response Body Sample (Successful):**
 ```json
 {
-    "id": 1
-    "name": "Mark Essien"
+    "id": 1,
+    "name": "Mark Essien",
+    "message": "Operation successful"
 }
 ``` 
 
 **Response Body Sample (Forbidden):**
 ```json
 {
-    "message": "Error occured try again, enter a valid name string "
+    "message": "Enter a valid string for name, Special characters not allowed"
 }
 ``` 
 
@@ -102,19 +126,42 @@ No authentication is required
     "message": "Person with specified ID does not exist"
 }
 ``` 
+**Response Body Sample (Internal Server Error):**
+```json
+{
+    "message": "Error occured updating Person"
+}
+``` 
 
-Delete Book by ID
-**Endpoint**: DELETE /books/{id}
+Delete Person by ID
 
-**Description**: Delete a book by its ID.
+# **Endpoint**: `DELETE /api/{user_id}`
 
-**Request:**
+**Description**: Delete a Person by ID.
 
-**Headers:** None
+## **Request:**
+
+**Headers :** None
+
 **Response:**
 
-- Status Code: 204 No Content if the book was successfully deleted
-- Status Code: 404 Not Found if the book does not exist
+- Status Code: `204 No Content` if the was successfully deleted
+- Status Code: `404 Not Found` if the Person with id does not exist
+- Status Code: `500 Internal Server Error` Error occured processing request
+
+**Response Body Sample (Internal Server Error):**
+```json
+{
+    "message": "Error occured updating Person"
+}
+``` 
+
+**Response Body Sample (Not Found):**
+```json
+{
+    "message": "Person with specified ID does not exist"
+}
+``` 
 
 # Error Handling
 When an error occurs, the API will return an appropriate HTTP status code along with a JSON response containing an error message.

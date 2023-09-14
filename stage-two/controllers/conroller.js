@@ -2,7 +2,7 @@ const asyncHandler = require('express-async-handler');
 const User = require('../models/User');
 
 
-const getEntity = asyncHandler(async(req,res) => {
+const getPerson = asyncHandler(async(req,res) => {
     try {
         const user = await User.findById(req.params.user_id).select("id name");
         if (!user) {
@@ -10,12 +10,12 @@ const getEntity = asyncHandler(async(req,res) => {
         }
         res.status(200).json({id: user.id, name: user.name})
     } catch (error) {
-        res.status(400).json({message: "Error occured fetching entity"});
+        res.status(400).json({message: "Error occured fetching Person"});
     }
 } )
 
 
-const postEntity = asyncHandler( async(req,res) => {
+const postPerson = asyncHandler( async(req,res) => {
     try {
         let idQuery = await User.findOne({},{},{sort: {'_id': -1}}).select("_id");
         let id;
@@ -30,14 +30,14 @@ const postEntity = asyncHandler( async(req,res) => {
         }
 
         await User.create({...req.body, _id: id});
-        res.status(200).json({message: "Success Posting entity"})
+        res.status(200).json({message: "Success Posting Person"})
     } catch (error) {
-        res.status(400).json({message: "Error occured posting entity"});
+        res.status(400).json({message: "Error occured posting Person"});
     }
 })
 
 
-const deleteEntity = asyncHandler(async (req,res) => {
+const deletePerson = asyncHandler(async (req,res) => {
     try {
         const user = await User.findByIdAndDelete(req.params.user_id).exec();
 
@@ -47,11 +47,11 @@ const deleteEntity = asyncHandler(async (req,res) => {
 
         res.status(200).json({message: "User deleted Successfully"})
     } catch (error) {
-        res.status(400).json({message: "Error occured fetching entity"})
+        res.status(400).json({message: "Error occured fetching Person"})
     }
 })
 
-const updateEntity = asyncHandler(async(req,res) => {
+const updatePerson = asyncHandler(async(req,res) => {
     try {
         let id = req.params.user_id;
         let inputPattern = /^[A-Za-z]+$/
@@ -70,10 +70,10 @@ const updateEntity = asyncHandler(async(req,res) => {
         }
         res.status(200).json({message: "Successfully Updated user"})
     } catch (error) {
-        res.status(400).json({message: "Error occured updating entity"})
+        res.status(400).json({message: "Error occured updating Person"})
     }
 })
 
 
 
-module.exports = {getEntity, deleteEntity, updateEntity, postEntity}
+module.exports = {getPerson, deletePerson, updatePerson, postPerson}

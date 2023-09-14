@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
-const {getEntity, deleteEntity, updateEntity, postEntity} = require('../controllers/conroller')
+const {getPerson, deletePerson, updatePerson, postPerson} = require('../controllers/conroller')
 
-router.get('/:user_id',getEntity);
-router.delete('/:user_id',deleteEntity);
-router.patch('/:user_id',updateEntity);
-router.post('/', postEntity);
+router.get('/:user_id',getPerson);
+router.delete('/:user_id',deletePerson);
+router.patch('/:user_id',updatePerson);
+router.post('/', postPerson);
 
 module.exports = router

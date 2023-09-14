@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const {getPerson, deletePerson, updatePerson, postPerson} = require('../controllers/conroller')
+const {getPerson, deletePerson, updatePerson, postPerson} = require('../controllers/conroller.js')
 
 router.get('/:user_id',getPerson);
 router.delete('/:user_id',deletePerson);

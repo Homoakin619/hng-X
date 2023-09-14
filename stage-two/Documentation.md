@@ -170,6 +170,3 @@ When an error occurs, the API will return an appropriate HTTP status code along 
 This API does not have rate limiting for public access.
 
 
-# Contact
-If you have any questions or need assistance, please contact our support team at support@example.com.
-

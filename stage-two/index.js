@@ -9,7 +9,7 @@ app.use(express.json())
 app.use('/api',router)
 
 app.use('/',(request,response) => {
-    return response.status(200).json({message: "I am Running"})
+    return response.status(200).send("Welcome to Person Api")
 }) 
 
 

@@ -2,7 +2,7 @@
 This API allows you to Creat Read Update and Delete a person entity;
 
 ## BASE URL
-The base url is : https://
+The base url is : [https://hng-project-1.vercel.app/]
 
 ## AUTHENTICATION
 No authentication is required

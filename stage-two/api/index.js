@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose')
 
-const router = require('./routes/router')
+const router = require('../routes/router')
 app.use(express.json())
 
 app.use('/api',router)
@@ -30,3 +30,4 @@ const start = () => {
 }
 
 start();
+module.exports = app

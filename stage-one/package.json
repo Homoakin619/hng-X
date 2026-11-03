@@ -7,7 +7,7 @@
     "node": "18.x"
   },
   "scripts": {
-    "start": "node ./main.js"
+    "start": "node init && node ./main.js"
   },
   "repository": {
     "type": "git",
